@@ -1,18 +1,15 @@
 package com.homework4.task1.model;
 
-import com.homework4.task1.abstra.SpaceShape;
-import com.homework4.task1.abstra.Vertex;
-
+import com.homework4.task1.abstracts.SpaceShape;
+import com.homework4.task1.abstracts.Vertex;
 import java.text.DecimalFormat;
 
 public class Sphere extends SpaceShape {
-
-    private Vertex3D vertex_A;
     private double radius;
     private boolean isRadiusCorrect = true;
 
     public Sphere(Vertex vertex, double radius) {
-        this.vertex_A = (Vertex3D)vertex;
+        super(vertex);
         if (radius <= 0) {
             System.out.println("Radius cannot be 0 or negative number ");
             isRadiusCorrect = false;
@@ -22,26 +19,20 @@ public class Sphere extends SpaceShape {
     }
 
     @Override
-    public double getArea() {
-        if (isRadiusCorrect) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            return Double.parseDouble(formatter.format(4.0 * Math.PI * Math.pow(radius, 2)));
-        }
-        return 0;
+    public double calculateArea() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        return isRadiusCorrect ? Double.parseDouble(formatter.format(4.0 * Math.PI * Math.pow(radius, 2))) : 0;
     }
 
     @Override
-    public double getVolume() {
-        if (isRadiusCorrect) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            return Double.parseDouble(formatter.format(((4.0 / 3.0) * Math.PI) * Math.pow(radius, 3)));
-        }
-        return 0;
+    public double calculateVolume() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        return isRadiusCorrect ? Double.parseDouble(formatter.format(((4.0 / 3.0) * Math.PI) * Math.pow(radius, 3))) : 0;
     }
 
     @Override
     public String toString() {
-        return "Sphere vertex : " + "A " + vertex_A.toString() + '\n'
-                + "Sphere volume = " + getVolume() + "   " + "Sphere area = " + getArea() + '\n';
+        return "Sphere vertex : " + "A " + getVertexA().toString() + '\n'
+                + "Sphere volume = " + calculateVolume() + "   " + "Sphere area = " + calculateArea() + '\n';
     }
 }

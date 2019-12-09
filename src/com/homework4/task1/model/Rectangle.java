@@ -1,18 +1,16 @@
 package com.homework4.task1.model;
 
-import com.homework4.task1.abstra.PlaneShape;
-import com.homework4.task1.abstra.Vertex;
-
+import com.homework4.task1.abstracts.PlaneShape;
+import com.homework4.task1.abstracts.Vertex;
 import java.text.DecimalFormat;
 
 public class Rectangle extends PlaneShape {
-    private Vertex2D vertex_A;
     private double width;
     private double height;
     private boolean isCorrectNumber = true;
 
     public Rectangle(Vertex a, double width, double height) {
-        this.vertex_A = (Vertex2D)a;
+        super(a);
         if (width <= 0) {
             System.out.println("Width cannot be 0 or negative number ");
             isCorrectNumber = false;
@@ -25,30 +23,25 @@ public class Rectangle extends PlaneShape {
         } else {
             this.height = height;
         }
+    }
+
+    @Override
+    public double calculateArea() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        return isCorrectNumber ? Double.parseDouble(formatter.format(width * height)) : 0;
 
     }
 
     @Override
-    public double getArea() {
-        if (isCorrectNumber) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            return Double.parseDouble(formatter.format(width * height));
-        }
-        return 0;
-    }
+    public double calculatePerimeter() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        return isCorrectNumber ? Double.parseDouble(formatter.format(2 * (width + height))) : 0;
 
-    @Override
-    public double getPerimeter() {
-        if (isCorrectNumber) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            return Double.parseDouble(formatter.format(2 * (width + height)));
-        }
-        return 0;
     }
 
     @Override
     public String toString() {
-        return "Rectangle vertex : " + "A " + vertex_A.toString() + '\n'
-                + "Rectangle perimeter = " + getPerimeter() + "   " + "Rectangle area = " + getArea() + '\n';
+        return "Rectangle vertex : " + "A " + getVertexA().toString() + '\n'
+                + "Rectangle perimeter = " + calculatePerimeter() + "   " + "Rectangle area = " + calculateArea() + '\n';
     }
 }

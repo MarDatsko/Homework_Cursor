@@ -1,54 +1,46 @@
 package com.homework4.task1.model;
 
-import com.homework4.task1.abstra.SpaceShape;
-import com.homework4.task1.abstra.Vertex;
-
+import com.homework4.task1.abstracts.SpaceShape;
+import com.homework4.task1.abstracts.Vertex;
 import java.text.DecimalFormat;
 
 public class SquarePyramid extends SpaceShape {
-    private Vertex3D vertex_A;
-    private double pyramid_height;
-    private double base_side;
+    private double pyramidHeight;
+    private double baseSide;
     private boolean isNumberCorrect = true;
 
-    public SquarePyramid(Vertex vertex, double pyramid_height, double base_side) {
-        this.vertex_A = (Vertex3D)vertex;
-        if (pyramid_height <= 0) {
+    public SquarePyramid(Vertex vertex, double pyramidHeight, double baseSide) {
+        super(vertex);
+        if (pyramidHeight <= 0) {
             System.out.println("Pyramid height cannot be 0 or negative number ");
             isNumberCorrect = false;
         } else {
-            this.pyramid_height = pyramid_height;
+            this.pyramidHeight = pyramidHeight;
         }
-        if (base_side <= 0) {
+        if (baseSide <= 0) {
             System.out.println("Base side cannot be 0 or negative number ");
             isNumberCorrect = false;
         } else {
-            this.base_side = base_side;
+            this.baseSide = baseSide;
         }
     }
 
     @Override
-    public double getArea() {
-        if (isNumberCorrect) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            double lateral_area = base_side * Math.sqrt((4.0 * Math.pow(pyramid_height, 2) + Math.pow(base_side, 2)));
-            return Double.parseDouble(formatter.format(lateral_area + Math.pow(base_side, 2)));
-        }
-        return 0;
+    public double calculateArea() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        double lateral_area = baseSide * Math.sqrt((4.0 * Math.pow(pyramidHeight, 2) + Math.pow(baseSide, 2)));
+        return isNumberCorrect ? Double.parseDouble(formatter.format(lateral_area + Math.pow(baseSide, 2))) : 0;
     }
 
     @Override
-    public double getVolume() {
-        if (isNumberCorrect) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
-            return Double.parseDouble(formatter.format((1.0 / 3.0) * Math.pow(base_side, 2) * pyramid_height));
-        }
-        return 0;
+    public double calculateVolume() {
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        return isNumberCorrect ? Double.parseDouble(formatter.format((1.0 / 3.0) * Math.pow(baseSide, 2) * pyramidHeight)) : 0;
     }
 
     @Override
     public String toString() {
-        return "Square Pyramid vertex : " + "A " + vertex_A.toString() + '\n'
-                + "Square Pyramid volume = " + getVolume() + "   " + "Square Pyramid sur face area = " + getArea() + '\n';
+        return "Square Pyramid vertex : " + "A " + getVertexA().toString() + '\n'
+                + "Square Pyramid volume = " + calculateVolume() + "   " + "Square Pyramid sur face area = " + calculateArea() + '\n';
     }
 }

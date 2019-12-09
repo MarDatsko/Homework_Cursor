@@ -1,18 +1,17 @@
 package com.homework4.task1.model;
 
-import com.homework4.task1.abstra.Vertex;
+import com.homework4.task1.abstracts.Vertex;
 
 public class Vertex2D extends Vertex {
     private double x;
     private double y;
 
-    public Vertex2D(float x, float y) {
-        this.x = x;
-        this.y = y;
+    public Vertex2D(double x, double y) {
+        super(x, y);
     }
 
     public double getX() {
-        return x;
+        return super.getX();
     }
 
     public void setX(float x) {
@@ -20,7 +19,7 @@ public class Vertex2D extends Vertex {
     }
 
     public double getY() {
-        return y;
+        return super.getY();
     }
 
     public void setY(float y) {
@@ -29,6 +28,6 @@ public class Vertex2D extends Vertex {
 
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return super.toString();
     }
 }
