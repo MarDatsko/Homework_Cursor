@@ -4,6 +4,6 @@ import com.homework4.task1.model.*;
 
 public class Main {
     public static void main(String[] args) {
-        new RunProgram().runProgram();
+        new ProgramRuner().runProgram();
     }
 }
