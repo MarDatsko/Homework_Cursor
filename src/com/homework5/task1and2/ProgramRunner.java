@@ -21,9 +21,9 @@ public class ProgramRunner {
         myDoubleList.add(myDouble2);
         myDoubleList.add(myDouble3);
 
-        System.out.println('\n' + "The largest number in integer array = " + myIntegerList.getLargestNumber(myIntegerList.getArray()));
-        System.out.println("The smallest number in integer array = " + myIntegerList.getSmallestNumber(myIntegerList.getArray()) + '\n');
-        System.out.println("The largest number in double array = " + myDoubleList.getLargestNumber(myDoubleList.getArray()));
-        System.out.println("The smallest number in double array = " + myDoubleList.getSmallestNumber(myDoubleList.getArray()));
+        System.out.println('\n' + "The largest number in integer array = " + myIntegerList.getLargestNumber(myIntegerList.getList()));
+        System.out.println("The smallest number in integer array = " + myIntegerList.getSmallestNumber(myIntegerList.getList()) + '\n');
+        System.out.println("The largest number in double array = " + myDoubleList.getLargestNumber(myDoubleList.getList()));
+        System.out.println("The smallest number in double array = " + myDoubleList.getSmallestNumber(myDoubleList.getList()));
     }
 }
